@@ -1,0 +1,19 @@
+<aura:component controller="CasePriorityListController">
+    <aura:attribute name="priority" type="String" default="High" />
+
+    <!-- Needed for dataTabale -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="priorityChangedEvent" event="c:PriorityChangedEvent" action="{!c.handlePriorityChangedEvent}" />
+
+    <c:CasePriorityListFilter />
+    <br />
+    <lightning:datatable
+        keyField="id"
+        data="{!v.data}"
+        columns="{!v.columns}"
+        hideCheckboxColumn="true" />
+
+</aura:component>
